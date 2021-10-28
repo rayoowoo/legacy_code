@@ -1,13 +1,14 @@
 from get_class_into_test_harness.what_does_chandler_even_do import StatisticalAnalysis
 from get_class_into_test_harness.what_does_chandler_even_do import DataReconfiguration
-from get_class_into_test_harness.d_global_dependency.transponsterings import StatisticalTransponsterings
-from get_class_into_test_harness.d_global_dependency.transponsterings import DataTransponsterings
-from get_class_into_test_harness.d_global_dependency.transponsterings import Results
-from get_class_into_test_harness.d_global_dependency.transponsterings import ChandlersJob
+from get_class_into_test_harness.what_does_chandler_even_do import Copywriting
+from get_class_into_test_harness.e_onion_parameter.transponsterings import StatisticalTransponsterings
+from get_class_into_test_harness.e_onion_parameter.transponsterings import DataTransponsterings
+from get_class_into_test_harness.e_onion_parameter.transponsterings import Results
+from get_class_into_test_harness.e_onion_parameter.transponsterings import ChandlersJob
 
 class Transponster:
 
-    def __init__(self, analysis: StatisticalAnalysis, reconfig: DataReconfiguration):
+    def __init__(self, analysis: StatisticalAnalysis, reconfig: DataReconfiguration, copywriting: Copywriting):
         self.start_job()
         self._analysis = analysis
         self._reconfig = reconfig
@@ -17,6 +18,8 @@ class Transponster:
         result = self.should_chandler_switch_jobs()
         if result:
             self.switch_job()
+            self._copywriting = copywriting
+        self.do_job()
 
     def start_job(self):
         job = ChandlersJob(name="statistical analysis and data reconfiguration")
@@ -26,4 +29,10 @@ class Transponster:
         self.job.change(name="junior copywriter")
 
     def should_chandler_switch_jobs(self):
-        return self._results.compare()
+        if self._stat_transponstering != self._data_transponstering:
+            return True
+        return False
+
+    def do_job(self):
+        if self.job.name == "junior copywriter":
+            self._copywriting.write()
