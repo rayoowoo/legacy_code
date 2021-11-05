@@ -32,6 +32,6 @@ There are five small exercises in this kata:
     e. peeling back an onion parameter
 
 
-Each exercise lives in its own subdirectory. The goal is to instantiate the Transponster class in the test class and see if you can get coverage. 
+Each exercise lives in its own subdirectory. The goal is to instantiate the Transponster class. 
 
 The exercises are relatively cumulative, so if you're up to the challenge (_Chandler would_), you can go straight to the last exercise. 
